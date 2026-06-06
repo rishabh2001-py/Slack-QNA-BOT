@@ -22,31 +22,31 @@ A production-ready Slack bot that answers infrastructure questions in real time 
 ```mermaid
 flowchart TD
     subgraph Sources["📚 Knowledge Sources"]
-        CF[Confluence\nSpace: PO]
-        JR[Jira\nProject: DV]
-        BB[Bitbucket\nInfra Repos]
-        SL[Slack\n#devops history]
+        CF["Confluence<br/>Space: PO"]
+        JR["Jira<br/>Project: DV"]
+        BB["Bitbucket<br/>Infra Repos"]
+        SL["Slack<br/>#devops history"]
     end
 
-    subgraph Ingestion["⚙️ Ingestion Pipeline (every 6h)"]
-        IC[ingest_confluence.py\nCQL incremental filter]
-        IS[ingest_sources.py\nJira · Bitbucket · Slack]
-        CH[Chunker\n500 tokens, 80 overlap]
-        EM[Sentence Transformers\nall-MiniLM-L6-v2\nlocal embeddings]
-        VS[(ChromaDB\nVector Store\ncosine similarity)]
+    subgraph Ingestion["⚙️ Ingestion Pipeline - every 6h"]
+        IC["ingest_confluence.py<br/>CQL incremental filter"]
+        IS["ingest_sources.py<br/>Jira + Bitbucket + Slack"]
+        CH["Chunker<br/>500 tokens, 80 overlap"]
+        EM["Sentence Transformers<br/>all-MiniLM-L6-v2<br/>local embeddings"]
+        VS[("ChromaDB<br/>Vector Store<br/>cosine similarity")]
     end
 
     subgraph Bot["🤖 Slack Bot - Socket Mode"]
-        SB[Slack Bolt\nEvent Handler]
-        RT[retriever.py\nRAG Pipeline]
-        LLM[Groq API\nllama-3.3-70b-versatile]
+        SB["Slack Bolt<br/>Event Handler"]
+        RT["retriever.py<br/>RAG Pipeline"]
+        LLM["Groq API<br/>llama-3.3-70b-versatile"]
     end
 
     subgraph Slack["💬 Slack"]
-        USER[User message\n#devops channel]
-        REPLY[Answer posted\nin thread with citations]
-        CMD1[/devops-search\ndebug vector search]
-        CMD2[/devops-reindex\nmanual re-index]
+        USER["User message<br/>#devops channel"]
+        REPLY["Answer posted<br/>in thread with citations"]
+        CMD1["slash devops-search<br/>debug vector search"]
+        CMD2["slash devops-reindex<br/>manual re-index"]
     end
 
     CF --> IC --> CH
