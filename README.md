@@ -12,19 +12,8 @@ A production-ready Slack bot that answers infrastructure questions in real time 
 ## Screenshots
 
 ### Bot answering an infra question in Slack
-> _(Add screenshot here — drag image into GitHub editor)_
+<img width="1135" height="660" alt="Screenshot 2026-06-07 at 1 55 38 AM" src="https://github.com/user-attachments/assets/bf53b10e-4448-4029-826d-dc5af93da135" />
 
-![Bot Answer](docs/screenshots/bot-answer.png)
-
-### `/devops-search` debug command
-> _(Add screenshot here)_
-
-![Search Command](docs/screenshots/devops-search.png)
-
-### Ingestion log on startup
-> _(Add screenshot here)_
-
-![Ingestion Log](docs/screenshots/ingestion-log.png)
 
 ---
 
